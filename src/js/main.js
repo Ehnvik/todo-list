@@ -49,3 +49,24 @@ ul.classList.add("main__container");
 
 //footer style
 footer.classList.add("footer");
+
+let newItems = [];
+
+function addedItems() {
+  const listItem = document.createElement("li");
+  ul.appendChild(listItem);
+  listItem.innerHTML = input.value;
+  listItem.classList.add("main__container__item");
+
+  newItems.push(new Item(input.value));
+
+  localStorage.setItem("item", JSON.stringify(newItems));
+
+  input.value = "";
+}
+
+function handleInputButton() {
+  inputButton.addEventListener("click", addedItems);
+}
+
+handleInputButton();

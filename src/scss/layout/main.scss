@@ -1,7 +1,16 @@
+@use "../components/" as c;
+
 .main {
   display: flex;
   flex-direction: column;
   align-items: center;
   height: 70vh;
   background-color: lightblue;
+  &__container {
+    padding: 0;
+    font-size: 25px;
+    &__item {
+      font-family: c.$primaryFont;
+    }
+  }
 }

@@ -58,15 +58,24 @@ function addedItems() {
   listItem.innerHTML = input.value;
   listItem.classList.add("main__container__item");
 
-  newItems.push(new Item(input.value));
-
-  localStorage.setItem("item", JSON.stringify(newItems));
+  for (let i = 0; i < newItems.length; i++) {
+    listItem.addEventListener("click", () => {
+      handleClick(newItems[i]);
+    });
+  }
+  if (input.value < "a" && input.value < 1) {
+    alert("Vänligen fyll i något att göra först!");
+    listItem.remove();
+  } else {
+    newItems.push(new Item(input.value));
+    localStorage.setItem("item", JSON.stringify(newItems));
+  }
 
   input.value = "";
 }
 
-function handleInputButton() {
-  inputButton.addEventListener("click", addedItems);
+function handleClick(newItem) {
+  console.log(`Du klickade på ${newItem.item}`);
 }
 
-handleInputButton();
+inputButton.addEventListener("click", addedItems);
